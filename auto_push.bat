@@ -1,7 +1,7 @@
 @echo off
 
 REM Stage all changes
-git add .
+git add -A
 
 REM Get date in YYYY-MM-DD format (Windows 10 & 11 safe)
 for /f %%I in ('powershell -NoProfile -Command "Get-Date -Format yyyy-MM-dd"') do set commit_date=%%I
