@@ -1,6 +1,49 @@
 const GEMINI_MODEL = "gemini-3-flash-preview";
 const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
 
+function formatLogSection(title, value) {
+  return `## ${title}\n${value == null ? "" : String(value)}\n`;
+}
+
+async function saveLlmCallLog(entry) {
+  try {
+    if (!chrome?.downloads?.download) return;
+
+    const ts = new Date().toISOString();
+    const safeType = String(entry.callType || "unknown").replace(/[^a-z0-9_-]/gi, "_");
+    const filename = `job-gap-coach-logs/${ts.replace(/[:.]/g, "-")}-${safeType}.log`;
+
+    const sections = [
+      formatLogSection("timestamp", ts),
+      formatLogSection("callType", entry.callType || "unknown"),
+      formatLogSection("model", GEMINI_MODEL),
+      formatLogSection("status", entry.status || "unknown"),
+      formatLogSection("httpStatus", entry.httpStatus || "n/a"),
+      formatLogSection("finishReason", entry.finishReason || "n/a"),
+      formatLogSection("error", entry.error || "n/a"),
+      formatLogSection("prompt", entry.prompt || ""),
+      formatLogSection("response", entry.response || "")
+    ];
+
+    const content = `${sections.join("\n")}\n`;
+    const blob = new Blob([content], { type: "text/plain;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+
+    try {
+      await chrome.downloads.download({
+        url,
+        filename,
+        saveAs: false,
+        conflictAction: "uniquify"
+      });
+    } finally {
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+    }
+  } catch (err) {
+    console.warn("Could not save LLM call log:", err);
+  }
+}
+
 const ANALYSIS_JSON_INSTRUCTION = `You are a career coach. Compare the candidate's resume/skills text with the job posting.
 Return ONLY valid JSON (no markdown) with this exact shape:
 {
@@ -106,43 +149,92 @@ async function analyzeJobGapWithGemini(apiKey, resumeText, jobPayload) {
   ].join("\n");
 
   const url = `${GEMINI_URL}?key=${encodeURIComponent(apiKey.trim())}`;
-  const res = await fetch(url, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      contents: [{ role: "user", parts: [{ text: userBlock }] }],
-      generationConfig: {
-        temperature: 1,
-        responseMimeType: "application/json"
-      }
-    })
-  });
-
-  const data = await res.json().catch(() => ({}));
-
-  if (!res.ok) {
-    const msg =
-      data?.error?.message ||
-      data?.error?.status ||
-      `Gemini request failed (${res.status})`;
-    throw new Error(msg);
-  }
-
-  const partText =
-    data?.candidates?.[0]?.content?.parts?.map((p) => p.text || "").join("") || "";
-  const finish = data?.candidates?.[0]?.finishReason;
-  if (finish && finish !== "STOP") {
-    throw new Error(`Gemini finished with ${finish}. Try again or shorten the job text.`);
-  }
-
-  let parsed;
   try {
-    parsed = JSON.parse(stripJsonFence(partText));
-  } catch {
-    throw new Error("Could not parse Gemini JSON. Try again.");
-  }
+    const res = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        contents: [{ role: "user", parts: [{ text: userBlock }] }],
+        generationConfig: {
+          temperature: 1,
+          responseMimeType: "application/json"
+        }
+      })
+    });
 
-  return normalizeAnalysis(parsed);
+    const data = await res.json().catch(() => ({}));
+
+    if (!res.ok) {
+      const msg =
+        data?.error?.message ||
+        data?.error?.status ||
+        `Gemini request failed (${res.status})`;
+      await saveLlmCallLog({
+        callType: "job-gap-analysis",
+        status: "error",
+        httpStatus: res.status,
+        error: msg,
+        prompt: userBlock,
+        response: JSON.stringify(data, null, 2)
+      });
+      throw new Error(msg);
+    }
+
+    const partText =
+      data?.candidates?.[0]?.content?.parts?.map((p) => p.text || "").join("") || "";
+    const finish = data?.candidates?.[0]?.finishReason;
+    if (finish && finish !== "STOP") {
+      const finishMessage = `Gemini finished with ${finish}. Try again or shorten the job text.`;
+      await saveLlmCallLog({
+        callType: "job-gap-analysis",
+        status: "error",
+        httpStatus: res.status,
+        finishReason: finish,
+        error: finishMessage,
+        prompt: userBlock,
+        response: partText
+      });
+      throw new Error(finishMessage);
+    }
+
+    let parsed;
+    try {
+      parsed = JSON.parse(stripJsonFence(partText));
+    } catch {
+      const parseMessage = "Could not parse Gemini JSON. Try again.";
+      await saveLlmCallLog({
+        callType: "job-gap-analysis",
+        status: "error",
+        httpStatus: res.status,
+        finishReason: finish,
+        error: parseMessage,
+        prompt: userBlock,
+        response: partText
+      });
+      throw new Error(parseMessage);
+    }
+
+    const normalized = normalizeAnalysis(parsed);
+    await saveLlmCallLog({
+      callType: "job-gap-analysis",
+      status: "success",
+      httpStatus: res.status,
+      finishReason: finish,
+      prompt: userBlock,
+      response: partText
+    });
+    return normalized;
+  } catch (err) {
+    if (err instanceof Error && err.message === "Failed to fetch") {
+      await saveLlmCallLog({
+        callType: "job-gap-analysis",
+        status: "error",
+        error: err.message,
+        prompt: userBlock
+      });
+    }
+    throw err;
+  }
 }
 
 function normalizeSimilarJobs(raw) {
@@ -183,46 +275,104 @@ async function suggestSimilarJobsWithGemini(apiKey, resumeText, jobPayload) {
   ].join("\n");
 
   const url = `${GEMINI_URL}?key=${encodeURIComponent(apiKey.trim())}`;
-  const res = await fetch(url, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      contents: [{ role: "user", parts: [{ text: userBlock }] }],
-      generationConfig: {
-        temperature: 0.7,
-        responseMimeType: "application/json"
-      }
-    })
-  });
-
-  const data = await res.json().catch(() => ({}));
-
-  if (!res.ok) {
-    const msg =
-      data?.error?.message ||
-      data?.error?.status ||
-      `Gemini request failed (${res.status})`;
-    throw new Error(msg);
-  }
-
-  const partText =
-    data?.candidates?.[0]?.content?.parts?.map((p) => p.text || "").join("") || "";
-  const finish = data?.candidates?.[0]?.finishReason;
-  if (finish && finish !== "STOP") {
-    throw new Error(`Gemini finished with ${finish}. Try again or shorten the job text.`);
-  }
-
-  let parsed;
   try {
-    parsed = JSON.parse(stripJsonFence(partText));
-  } catch {
-    throw new Error("Could not parse Gemini JSON for similar jobs. Try again.");
-  }
+    const res = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        contents: [{ role: "user", parts: [{ text: userBlock }] }],
+        generationConfig: {
+          temperature: 0.7,
+          responseMimeType: "application/json"
+        }
+      })
+    });
 
-  const normalized = normalizeSimilarJobs(parsed);
-  if (!normalized.length) {
-    throw new Error("Gemini did not return similar jobs. Try again.");
-  }
+    const data = await res.json().catch(() => ({}));
 
-  return normalized;
+    if (!res.ok) {
+      const msg =
+        data?.error?.message ||
+        data?.error?.status ||
+        `Gemini request failed (${res.status})`;
+      await saveLlmCallLog({
+        callType: "similar-jobs",
+        status: "error",
+        httpStatus: res.status,
+        error: msg,
+        prompt: userBlock,
+        response: JSON.stringify(data, null, 2)
+      });
+      throw new Error(msg);
+    }
+
+    const partText =
+      data?.candidates?.[0]?.content?.parts?.map((p) => p.text || "").join("") || "";
+    const finish = data?.candidates?.[0]?.finishReason;
+    if (finish && finish !== "STOP") {
+      const finishMessage = `Gemini finished with ${finish}. Try again or shorten the job text.`;
+      await saveLlmCallLog({
+        callType: "similar-jobs",
+        status: "error",
+        httpStatus: res.status,
+        finishReason: finish,
+        error: finishMessage,
+        prompt: userBlock,
+        response: partText
+      });
+      throw new Error(finishMessage);
+    }
+
+    let parsed;
+    try {
+      parsed = JSON.parse(stripJsonFence(partText));
+    } catch {
+      const parseMessage = "Could not parse Gemini JSON for similar jobs. Try again.";
+      await saveLlmCallLog({
+        callType: "similar-jobs",
+        status: "error",
+        httpStatus: res.status,
+        finishReason: finish,
+        error: parseMessage,
+        prompt: userBlock,
+        response: partText
+      });
+      throw new Error(parseMessage);
+    }
+
+    const normalized = normalizeSimilarJobs(parsed);
+    if (!normalized.length) {
+      const emptyMessage = "Gemini did not return similar jobs. Try again.";
+      await saveLlmCallLog({
+        callType: "similar-jobs",
+        status: "error",
+        httpStatus: res.status,
+        finishReason: finish,
+        error: emptyMessage,
+        prompt: userBlock,
+        response: partText
+      });
+      throw new Error(emptyMessage);
+    }
+
+    await saveLlmCallLog({
+      callType: "similar-jobs",
+      status: "success",
+      httpStatus: res.status,
+      finishReason: finish,
+      prompt: userBlock,
+      response: partText
+    });
+    return normalized;
+  } catch (err) {
+    if (err instanceof Error && err.message === "Failed to fetch") {
+      await saveLlmCallLog({
+        callType: "similar-jobs",
+        status: "error",
+        error: err.message,
+        prompt: userBlock
+      });
+    }
+    throw err;
+  }
 }

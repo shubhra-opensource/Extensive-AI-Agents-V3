@@ -3,7 +3,7 @@
     "name": "Job Gap Coach v3",
     "version": "3.0.0",
     "description": "Compare resume skills with the current job page and show technical gaps.",
-    "permissions": ["storage", "sidePanel", "tabs"],
+    "permissions": ["storage", "sidePanel", "tabs", "downloads"],
     "host_permissions": [
       "<all_urls>",
       "https://generativelanguage.googleapis.com/*"
