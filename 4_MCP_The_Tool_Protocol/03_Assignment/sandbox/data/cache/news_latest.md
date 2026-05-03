@@ -1,12 +1,10 @@
+### Agentic AI Job Market Shift: 8-Step Skill Stack & Resume Tips | Atul Kumar posted on the topic | LinkedIn
+https://www.linkedin.com/posts/atulk21academy_agenticai-aijobs2026-careertransition-activity-7443297823456030720-zp0D
+PM, QA, DevOps, LLM Ops → The only certifications worth pursuing in 2026, including Microsoft's new AI Agent Solution Architect This framework isn't theory. Sreeja went from DevOps to AI in 3 months. Anmol: zero interview calls to Senior System Engineer. Kennedy landed a Senior Technical Advisor role in the UK. We've run this with 46,000+ IT professionals across every transition — cloud, DevOps, data, and now Agentic AI. If you're in IT and wondering whether this wave is for you — it is. Comment "AGENTIC" and I'll send you the link directly. #AgenticAI#AIJobs2026#CareerTransition#CloudAI [...] ? Is this internal automation or client-facing AI? Do they need AI engineers, ML Ops, or AI-savvy product leaders? Because AI without the right architecture, governance, and execution talent becomes expensive experimentation. The organizations gaining real advantage are building cross-functional AI capability like engineering, data, QA, product, and compliance aligned from day one. AI isn’t just a skillset. It’s an operating model shift. If your team is exploring LLM integration, AI automation, or scalable model deployment — the conversation shouldn’t start with resumes. It should start with architecture and outcomes. [...] 52,000 tech jobs gone in 2 months. Agentic AI roles? Up 986% last year. The market isn't punishing IT professionals. It's redirecting them. And the ones who understand this are landing $200K–$400K+ roles as AI architects, developers, and technical PMs. I just recorded a 90-minute video that maps the exact path. This is content people have paid us for. For a limited time — it's free. Here's what's inside: → The 8-step Agentic AI skill stack — from Python and RAG all the way to multi-agent deployment on AWS and Azure → The 5 resume mistakes blocking your interview calls (and the exact fix) → How to build LinkedIn authority so recruiters DM you — not the other way around → Real interview questions by role — architect, developer, PM, QA, DevOps, LLM Ops → The only certifications worth
+
 ### Daily AI Agent News - Last 7 Days
 https://aiagentstore.ai/ai-agent-news/this-week
-NVIDIA releases Nemotron 3 Nano Omni, a new AI model that understands video, audio, images, and text at once. This makes AI agents 9x faster and cheaper to run while keeping quality high.
-
-Tuesday, April 28, 2026
-
-Three Major AI Agent Breakthroughs Today
-
-Google Cloud is accelerating AI agents for security after unveiling threat detection tools at Cloud Next 2026. Rubrik partnered with Google to secure and speed up these agents, addressing a critical need as enterprises adopt AI faster. [...] The New Generation of AI:OpenAI released GPT-5.5, Anthropic shipped Claude Opus 4.7, and both power workflows that complete complex tasks automatically. Adobe agents now finish creative projects across Photoshop, Illustrator, and Premiere without you switching between apps.
+The New Generation of AI:OpenAI released GPT-5.5, Anthropic shipped Claude Opus 4.7, and both power workflows that complete complex tasks automatically. Adobe agents now finish creative projects across Photoshop, Illustrator, and Premiere without you switching between apps.
 
 One Big Problem: 79% of companies adopted AI agents, but only 2% fully deployed them. The reason? 55% of leaders worry about reliability and errors. Autonomous agents still need safety guardrails.
 
@@ -16,58 +14,122 @@ Oracle is hosting a webcast today on human oversight for agentic AI, recognizing
 
 Why this matters: AI agents are moving from experiments to real products handling money, customers, and creative work. Companies investing now are gaining competitive advantages in automation, security, and customer experience.
 
-Monday, April 27, 2026
+Monday, April 27, 2026 [...] NVIDIA releases Nemotron 3 Nano Omni, a new AI model that understands video, audio, images, and text at once. This makes AI agents 9x faster and cheaper to run while keeping quality high.
+
+Tuesday, April 28, 2026
+
+Three Major AI Agent Breakthroughs Today
+
+Google Cloud is accelerating AI agents for security after unveiling threat detection tools at Cloud Next 2026. Rubrik partnered with Google to secure and speed up these agents, addressing a critical need as enterprises adopt AI faster.
+
+### Find AI Jobs in USA Fast – Last 3 Days Listings (Apply Early) - IABAC
+https://iabac.org/blog/ai-jobs-in-usa
+Generative AI jobs in the USA have emerged as their own distinct category in the last two years. Common titles include: Generative AI Engineer, LLM Engineer, Prompt Engineer, Foundation Model Specialist, RLHF Data Specialist, and AI Content Systems Engineer. These roles focus on working with pre-trained foundation models — fine-tuning them, aligning them with human feedback, and integrating them into products. Generative AI jobs in the USA in the last 3 days can be tracked most effectively on LinkedIn with the exact phrase 'Generative AI' in the search bar.
+
+Agentic AI Roles: What They Are and Where They Are Posted [...] Generative AI jobs in the USA have emerged as their own distinct category in the last two years. Common titles include: Generative AI Engineer, LLM Engineer, Prompt Engineer, Foundation Model Specialist, RLHF Data Specialist, and AI Content Systems Engineer. These roles focus on working with pre-trained foundation models — fine-tuning them, aligning them with human feedback, and integrating them into products. Generative AI jobs in the USA in the last 3 days can be tracked most effectively on LinkedIn with the exact phrase 'Generative AI' in the search bar.
+
+Agentic AI Roles: What They Are and Where They Are Posted [...] Agentic AI Roles: What They Are and Where They Are Posted
+
+Agentic AI jobs in the USA are the frontier of AI hiring in 2026. These roles involve building AI agents — autonomous systems that can reason, plan, and take sequences of actions to accomplish goals without constant human supervision. Companies like Adept AI, Cognition (the company behind Devin), and large tech players are actively building agentic systems. Titles include: AI Agent Engineer, Autonomous Systems Developer, Multi-Agent Systems Architect, and AI Workflow Automation Engineer. These postings appear most frequently on Wellfound and LinkedIn.
+
+### Other AI-Adjacent Roles: Data Scientists, AI PMs, and AI Researchers
 
 ### Agentic AI News — Launches, Models & Research
 https://agentic.ai/news
 Hyland announced new agentic and AI-driven product updates on April 21, 2026 for its enterprise content platform. The company says the changes embed content intelligence into core systems so regulated industries can modernize workflows and automate more work. For those tracking agentic AI product launches, this signals a push to move from chatbots to tools that can act inside enterprise systems. The biggest tell is Hyland's focus on compliance-heavy customers, where trust may matter as much as speed.
 
    Research Apr 21, 2026·The Manila times 
-### HUMAN Security Gives Marketing and Commerce Teams a Window Into the AI-Driven Internet through Expanded Capabilities and Adobe Integration [...] qBotica announced on April 21, 2026 that it has acquired Automatiga, a product company focused on enterprise automation. The deal is meant to strengthen qBotica's AI-first platform and speed its shift toward autonomous enterprise operations. For those tracking agentic AI product launches, this is a consolidation move that could widen the reach of existing automation tools. The key detail is that qBotica is buying capability, not just adding another service line.
+### HUMAN Security Gives Marketing and Commerce Teams a Window Into the AI-Driven Internet through Expanded Capabilities and Adobe Integration [...] BMC Helix says enterprises need governance before autonomous AI can move from pilots to production in April 2026.
 
-   Launch Apr 21, 2026·The Montreal Gazette 
-### Float Launches Float Intelligence, Finance AI Purpose-Built for the Canadian Business Efficiency Squeeze
+BMC Helix published a new study on April 21, 2026, about how enterprises are moving from agentic AI experiments to governed autonomous operations. The report says the main barrier is not the goal itself but the operational context companies must build around it. For those tracking agentic AI, this signals that adoption is now being judged as much by controls and workflows as by model capability. The sharpest takeaway is that the bottleneck may be enterprise readiness, not the agents.
 
-Float's new transaction-coding agent beats general LLMs by 28 points for 7,000 Canadian businesses. [...] YepAPI launched a unified API gateway for developers building modern applications, with $5 in free credits for new users. The platform is built to simplify third-party integrations across AI-powered apps and other software workflows. For those tracking agentic AI, this signals more infrastructure aimed at letting tools call services faster and with less glue code. The main question is whether a gateway like this becomes a standard layer for apps that need to act across many systems.
+   Model Apr 21, 2026·crypto.news 
+### 0G and Alibaba plug Qianwen LLM straight into onchain AI agents
 
-   Research Apr 24, 2026·Scienmag: Latest Science and Health News 
-### Multimodal AI Revolutionizes Materials Science Research
+0G Foundation [...] Infinitus Systems launched Infinitus Studio, a no-code AI agent builder for healthcare organizations. The company says users can design, test, and deploy agents without coding, with claims of 40% greater accuracy and 90% faster deployment. That makes healthcare one of the clearest proving grounds for agent builders that need speed and control. For those tracking agentic AI, this is a direct bet that domain-specific builders will win where generic tools are too broad.
 
-Nature Machine Intelligence spotlights a multimodal model for materials science, but it is still more parser than agent.
+   Research Apr 23, 2026·MarTech Series 
+### New TDWI Research Report Provides Guidance for Gaining Value from Agentic and Generative AI
 
-### Agentic AI News: Autonomous Agents, Frameworks & Launches | Let's Data Science
-https://letsdatascience.com/news/topic/agentic-ai
-Aviatrix announced a new Containment Platform for agentic AI on April 29, 2026, extending its Cloud Native Security Fabric with two components: Zero Trust for AI Workloads, now generally available, and Aviatrix AgentGuard, now in early access, per a GlobeNewswire press release. The company described the platform as enforcing "Communication Governance" across VMs, Kubernetes clusters, and serverless functions without agents or code changes, according to the release. Reporting and interviews with Aviatrix executives in SiliconANGLE and CRN emphasize a shift from detection to limiting blast radius; Aviatrix CEO Doug Merritt told SiliconANGLE, "My argument for the containment era is the most important metric is blast radius." CRN reported that AgentGuard discovers authorized and shadow [...] Anthropic's Claude Code is an agentic developer tool that can read and edit repositories, run shell commands, and automate git workflows; it is available as a CLI, IDE extension, and SDK, per the project's GitHub and official docs (anthropics/claude-code; Claude Code overview). In MarchApril 2026 some users reported degraded response quality in Claude Code. Anthropic published an engineering postmortem on April 23, 2026 that traced the regressions to three changes: lowering the default reasoning effort on March 4 (reverted April 7), a session-clearing bug introduced March 26 (fixed April 10), and a verbosity-reduction system prompt added April 16 (reverted April 20); the postmortem says the issues were resolved and usage limits were reset (Anthropic engineering postmortem). Community [...] The Register reports that, on Qualcomm's Q2 fiscal 2026 earnings call, CEO Cristiano Amon said the company will provide a custom product to "a leading hyperscaler," expects initial shipments "in the December quarter," and is "thinking about a multi-generation engagement." The Register also quotes Amon saying Qualcomm has built "a dedicated CPU for agentic experiences in the data center" and that the company is working on a data-center CPU and high-performance AI inference accelerators. Reporting by Yahoo Finance and earnings materials note the announcement coincided with investor optimism in chip stocks and that Qualcomm teased the concept of "agentic smartphones." The company said it will hold an investor day in June to disclose more details. The call also discussed memory shortages and
+### Fastest Growing AI Roles in 2026: Data and Rankings - HeroHunt.ai
+https://www.herohunt.ai/blog/fastest-growing-ai-roles-in-2026-data-and-rankings/
+The common thread across all these emerging roles is that they address the operational, ethical, and practical challenges of deploying AI at scale. The research and development phase of AI created demand for researchers and engineers. The deployment phase is creating demand for an entirely different set of professionals who can make AI work reliably, responsibly, and profitably in real-world business contexts. The pace of role creation shows no signs of slowing. If anything, the agentic AI wave, the regulatory compliance wave, and the physical infrastructure wave are each generating new specializations faster than the previous cycle did. Professionals who position themselves at the intersection of these emerging roles and a specific industry domain will have the strongest career [...] The AI Agent Architect is perhaps the clearest example. As agentic AI has moved from research concept to enterprise deployment, organizations need professionals who can design multi-agent systems where autonomous AI workers coordinate across business functions. Gartner projects that 40% of enterprise apps will embed task-specific AI agents by end of 2026 (up from less than 5% in 2024), and 89% of CIOs consider agent-based AI a strategic priority. The supply of professionals with practical agent orchestration experience is vanishingly small, creating a severe bottleneck that platforms like o-mega.ai help address by enabling deployment without deep engineering expertise - Gartner. [...] The skills required for agentic AI deployment, multi-modal model optimization, or AI safety research were barely taught in any university program until 2024, and the professionals who have developed these skills through practical experience are a vanishingly small group.
+
+### LLM Agent Statistics 2026 | InsightMark Research
+https://insightmarkresearch.com/insights/llm-agent-statistics-2026
+### Forward Projections
+
+ 74% of enterprises expect to use agentic AI at least moderately within two years
+ 33% of enterprise software applications will include agentic AI by 2028, up from less than 1% in 2024
+ 15% of day-to-day work decisions will be made autonomously through agentic AI by 2028
+ 50% of enterprises using GenAI are projected to deploy AI agents by 2027, up from 25% in 2025​
+ 80% of enterprises will have deployed GenAI APIs or applications by end of 2026
+ AI agents are projected to contribute $2.6 trillion to $4.4 trillion annually to global business value​
+
+Tags
+
+LLM Agents
+
+AI Agents
+
+Generative AI
+
+Artificial Intelligence
+
+Enterprise AI Adoption
+
+AI Automation
+
+Intelligent Agents
+
+Autonomous Systems
+
+AI Workflows
+
+Natural Language Processing
+
+Machine Learning [...] The global AI agents market was valued at $7.63 billion in 2025 and is projected to reach $10.91 billion in 2026​
+ Long-term projection puts the market at $182.97 billion by 2033, at a CAGR of 49.6%​
+ A separate estimate pegs the market at $8.29 billion in 2025, growing to $53.2 billion by 2030 at a 44.9% CAGR​
+ The large language model market was valued at $4.5 billion in 2023 and is projected to hit $82.1 billion by 2033 at 33.7% annually​
+ The LLM-powered tools segment is expected to grow from $2.08 billion in 2024 to $15.64 billion by 2029 at a 49.6% CAGR​
+ Enterprise LLM API spending reached $8.4 billion by mid-2025, more than double the $3.5 billion recorded in late 2024​
+ The agentic AI market specifically, valued at $5.25 billion in 2024, is on track toward $199 billion by 2034​ [...] 40% of enterprise applications are forecast to include task-specific AI agents by end of 2026, up from less than 5% in 2024
+ Only 6% of companies qualify as AI high performers with consistent, scaled business impact​
 
 ### Latest Agentic AI News Today | Trends, Predictions, & Analysis
 https://www.forbes.com/topics/agentic-ai/
-40 minutes ago
+Contributor
 
-medium
+Image 21: article image
 
-short
+Apr 26, 2026
 
-medium
+### AWS Cuts AI Agent Setup To 3 API Calls In AgentCore Update
 
-long
+AWS introduced a managed harness in Amazon Bedrock AgentCore that deploys autonomous AI agents in three API calls, alongside a new CLI, persistent filesystem and skills.
 
-   The Federal Reserve's updated model risk framework, SR 26-2, explicitly excludes agentic AI, leaving a critical governance gap as banks deploy autonomous trading agents.
-   Experian, Visa, and Cloudflare are launching "Agent Trust" to bind human identities to AI agents, aiming to build trust and unlock the agentic commerce market.
-   Frontier AI models can now autonomously find and exploit zero-day vulnerabilities, leading AI labs to partner with security firms like CrowdStrike on defensive measures.
-
-## Sources
-
-### Is Agentic Commerce Going Mainstream? Experian And Visa Think So
-
-ByTim Keary,
+ByJanakiram MSV,
 
 Contributor
 
-### The Governance Gap That Could Break Financial Markets
+Image 22: article image
 
-ByZennon Kapron,
+Apr 24, 2026
 
-Contributor [...] ByZennon Kapron,
+### Google And The Future Of Search, Maps And AI Agents
+
+In this article and conversation with Google executive Nick Fox, it points to a future where search becomes more useful, more personal, and far more agentic.
+
+ByBernard Marr,
+
+Contributor
+
+Image 23: article image
+
+Apr 23, 2026
+
+### The CIO’s Guide To Agentic AI: How To Move From Experiments To ROI [...] ByZennon Kapron,
 
 Contributor
 
@@ -99,60 +161,34 @@ View Brief
 
 Image 13: AI Agents Enter The Enterprise
 
-### AI Agents Enter The Enterprise [...] 5+
+### AI Agents Enter The Enterprise [...] Contributor
 
-My Account Notifications
+Image 26: article image
 
-DAILY COVER STORY
+Apr 22, 2026
 
-Seven Ways Social Security Benefits Are Unfair
+### Ulta Partners With Google Gemini To Power Agentic AI For Beauty Shoppers
 
-14h ago
+Ulta Beauty is integrating Google's Gemini AI into its website and app, and extending its catalog across Google's platforms giving it a competitive edge in retail beauty.
 
-BREAKING
+ByPamela N. Danziger,
 
-Trump Tells Congress Iran War Is ‘Terminated,’ Arguing He Doesn’t Need Approval To Continue
+Contributor
 
-1d ago
+Image 27: article image
 
-FORBES DAILY
+Apr 20, 2026
 
-Alphabet stock soars on strong cloud revenue.
+### Apple’s Tim Cook Exit Hides A $4 Trillion Agentic AI Power Move
 
-1d ago
+John Ternus will become CEO, but the real agentic AI signal is Johny Srouji’s promotion to chief hardware officer.
 
-DAILY COVER STORY
+BySandy Carter,
 
-Record $125 Million Gift To Case Western Boosts Humanities In Age Of AI
+Contributor
 
-2d ago
+View More
 
-BREAKING
+[](
 
-Larry Page’s Worth Over $300 Billion For First Time Amid Alphabet Earnings Rally
-
-2d ago
-
-FORBES DAILY
-
-Elon Musk testifies against OpenAI, says he was a "fool" for funding it.
-
-3d ago
-
-DAILY COVER STORY
-
-Inside Suno’s $2.5 Billion Bet That AI-Made Music Is Here To Stay
-
-3d ago
-
-BREAKING
-
-LIV Golf Loses Saudi Arabia Funding—Effectively Ending PGA Rival, Report Says
-
-3d ago
-
-FORBES DAILY
-
-### How Harness-as-a-Service Will Change Agents - YouTube
-https://www.youtube.com/watch?v=jvqQ8VlhO-w
-Apple Just Positioned Itself for the Next Trillion Dollars AI News & Strategy Daily | Nate B Jones 280K views • 6 days ago Live Playlist ()Mix (50+)39:58 Ex-Google Exec: How to Position Yourself Now Before the Next AI Phase (2026–2027) | Mo Gawdat Silicon Valley Girl and Mo Gawdat 795K views • 1 month ago Live Playlist ()Mix (50+)2:18:44 Google Invests $40B Into Anthropic, GPT 5.5 Drops, and Google Cloud Dominates | EP #252 Peter H. Diamandis 132K views • 2 days ago Live Playlist ()Mix (50+)29:08 Anthropic Might Buy Atlassian For $40B. Here's Why It Makes Sense.AI News & Strategy Daily | Nate B Jones 12K views • 5 hours ago Live Playlist ()Mix (50+)2:07:49 Why AI CEOs Are Building Bunkers - Tristan Harris Chris Williamson 672K views • 1 month ago Live Playlist ()Mix (50+)47:59 The
+© 2026 Forbes Media LLC. All Rights Reserved.

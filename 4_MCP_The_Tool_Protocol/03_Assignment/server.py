@@ -22,6 +22,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 TAVILY_API_KEY = os.getenv("TAVILY_API_KEY")
+JOOBLE_API_KEY = os.getenv("JOOBLE_API_KEY")
 
 
 mcp = FastMCP("LLM_Career_Copilot_Weekly_Brief")
@@ -305,8 +306,100 @@ def papers_search(topic: str="agentic ai", max_results: int = 5) -> list[dict]:
     return final
 
 # ===========================================================================
+# Jooble
+# ===========================================================================
+def _get_jooble_key() -> str:
+    if not JOOBLE_API_KEY:
+        raise ValueError("JOOBLE_API_KEY not set in environment")
+    return JOOBLE_API_KEY
+
+@mcp.tool()
+def jobs_search(topic: str = "llm engineer", max_results: int = 5) -> list[dict]:
+    """
+    Fetch relevant current jobs in India using the Jooble REST API.
+
+    Returns a list of:
+    {
+        "title": str,
+        "company": str,
+        "location": str,
+        "snippet": str,
+        "url": str,
+        "source": str,
+        "salary": str | None,
+        "updated": str | None,
+    }
+    """
+    api_key = _get_jooble_key()
+    url = f"https://jooble.org/api/{api_key}"
+
+    # For now: always search within India; topic is your "what"
+    payload = {
+        "keywords": topic,
+        "location": "India",          # you can make this smarter later
+        "radius": "0",                # 0 = exact location, but "India" is broad
+        "page": "1",
+        "ResultOnPage": str(max_results),
+        "companysearch": "false",     # search in title/description, not only company
+    }
+
+    resp = requests.post(url, json=payload, timeout=10)
+    resp.raise_for_status()
+    data = resp.json()
+
+    jobs_raw = data.get("jobs", [])
+    jobs: list[dict] = []
+
+    for job in jobs_raw[:max_results]:
+        jobs.append(
+            {
+                "title": job.get("title"),
+                "company": job.get("company"),
+                "location": job.get("location"),
+                "snippet": job.get("snippet"),
+                "url": job.get("link"),
+                "source": job.get("source"),
+                "salary": job.get("salary"),
+                "updated": job.get("updated"),
+            }
+        )
+
+    # Cache to data/cache/jobs_latest.md (same pattern as news/repos/papers)
+    cache_path = CACHE_DIR / "jobs_latest.md"
+    cache_text = "\n\n".join(
+        f"### {j['title']}\n"
+        f"{j.get('company') or ''} — {j.get('location') or ''}\n"
+        f"{j.get('url') or ''}\n"
+        f"{j.get('snippet') or ''}"
+        for j in jobs
+    )
+    cache_path.write_text(cache_text, encoding="utf-8")
+
+    return jobs
+
+
+
+
+
+
+
+# ===========================================================================
 # FILE CRUD — the same primitives Claude itself uses to edit code
 # ===========================================================================
+
+@mcp.tool()
+def cache_clear() -> str:
+    """
+    Clear cached .md files under data/cache before building a new brief.
+    """
+    deleted = []
+    for path in CACHE_DIR.glob("*.md"):
+        try:
+            path.unlink()
+            deleted.append(path.name)
+        except Exception:
+            pass
+    return f"Cleared cache files: {', '.join(deleted) if deleted else 'none'}"
 
 @mcp.tool()
 def list_files(subdir: str = "") -> list[str]:
@@ -355,12 +448,6 @@ def delete_file(path: str) -> str:
     else:
         p.unlink()
     return f"Deleted {path}"
-# ===========================================================================
-# domain-specific tools
-# ===========================================================================
-# ===========================================================================
-# Web Search
-# ===========================================================================
 
 
 # ===========================================================================
@@ -419,14 +506,47 @@ def history_read(brief_id: str) -> str:
 
     return p.read_text(encoding="utf-8")
 
+@mcp.tool()
+def history_compare(limit: int = 5) -> dict:
+    """
+    Return the last `limit` briefs (ID + full markdown content) so the LLM
+    can compare current signals/topics against them in its own prompt.
+
+    Returns:
+    {
+        "briefs": [
+            {
+                "brief_id": str,
+                "content": str,
+            },
+            ...
+        ]
+    }
+    """
+    briefs_dir = BRIEFS_DIR
+    if not briefs_dir.exists():
+        return {"briefs": []}
+
+    # Collect .md files and sort newest first by filename
+    files = [p for p in briefs_dir.iterdir() if p.is_file() and p.suffix == ".md"]
+    files_sorted = sorted(files, key=lambda p: p.name, reverse=True)
+    files_sorted = files_sorted[: max(limit, 0)]
+
+    briefs: list[dict] = []
+    for p in files_sorted:
+        content = p.read_text(encoding="utf-8")
+        briefs.append(
+            {
+                "brief_id": p.stem,
+                "content": content,
+            }
+        )
+
+    return {"briefs": briefs}
+
 # ===========================================================================
 # RESOURCES — read-only, addressed by URI (vs tools which are actions)
 # ===========================================================================
-
-@mcp.resource("greeting://{name}")
-def greeting(name: str) -> str:
-    """A personalized hello — demonstrates a parameterized resource URI."""
-    return f"Hello, {name}!"
 
 
 @mcp.resource("sandbox://{path}")

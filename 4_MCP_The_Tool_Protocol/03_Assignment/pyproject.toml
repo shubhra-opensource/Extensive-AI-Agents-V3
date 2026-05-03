@@ -6,7 +6,10 @@ readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "bs4>=0.0.2",
+    "fastmcp>=3.2.4",
+    "google-genai>=1.74.0",
     "mcp[cli]>=1.27.0",
+    "prefab-ui>=0.19.1",
     "python-dotenv>=1.2.2",
     "requests>=2.33.1",
     "tavily-python>=0.7.24",

@@ -8,6 +8,7 @@ dependencies = [
     "google>=3.0.0",
     "mcp[cli]>=1.27.0",
     "pillow>=12.2.0",
+    "prefab-ui>=0.19.1",
     "pyautogui>=0.9.54",
     "requests>=2.33.1",
 ]
