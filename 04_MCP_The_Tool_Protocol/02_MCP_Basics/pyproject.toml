@@ -1,0 +1,13 @@
+[project]
+name = "02-mcp-basics"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "google>=3.0.0",
+    "mcp[cli]>=1.27.0",
+    "pillow>=12.2.0",
+    "pyautogui>=0.9.54",
+    "requests>=2.33.1",
+]
